@@ -1,0 +1,9 @@
+frontend http
+    bind *:80
+    mode http
+    default_backend http_back
+
+backend http_back
+    balance roundrobin
+    server node1 10.0.5.100:80 check
+    server node2 10.0.5.101:80 check
