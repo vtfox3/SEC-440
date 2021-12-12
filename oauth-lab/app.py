@@ -2,25 +2,19 @@ from requests_oauthlib import OAuth2Session
 from flask import Flask, request, redirect, session, url_for
 from flask.json import jsonify
 import os
-import json
+import simplejson as json
 
 app = Flask(__name__)
 
 
-# This information is obtained upon registration of a new GitHub OAuth
-# application here: https://github.com/settings/applications/new
-client_id = "<your client key>"
-client_secret = "<your client secret>"
-authorization_base_url = 'https://github.com/login/oauth/authorize'
-token_url = 'https://github.com/login/oauth/access_token'
-
-with open("creds.json", "r") as jsonfile:
-    jsoncontent = jsonfile.read()
-creds = json.loads(jsoncontent)
+fileObject = open("creds.json", "r")
+jsonContent = fileObject.read()
+creds = json.loads(jsonContent)
 client_id = creds['client_id']
 client_secret = creds['client_secret']
 authorization_base_url = creds['authorization_base_url']
-token_url= creds['token_url']
+token_url = creds['token_url']
+
 
 @app.route("/")
 def demo():
@@ -68,10 +62,10 @@ def profile():
 
 if __name__ == "__main__":
     # This allows us to use a plain HTTP callback
-    #os.environ['OAUTHLIB_INSECURE_TRANSPORT'] = "1"
+   # os.environ['OAUTHLIB_INSECURE_TRANSPORT'] = "1"
 
     app.secret_key = os.urandom(24)
-    #app.run(debug=True)
+	#ONLY FOR LOCALHOST    
     app.run(ssl_context="adhoc")
-    # Making app listen on all addresses
-    app.run(ssl_context="adhoc", host="0.0.0.0") 
+    # Listening on all interfaces
+    #app.run(ssl_contexts="adhoc", host="0.0.0.0")
