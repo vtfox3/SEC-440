@@ -1,4 +1,4 @@
-# Rename this to "creds.json" after editing
+# Rename this to "creds.json" after editing -- delete comments before running
 # Change "xxxx" to the unique ID or secret string
 {
   "client_id": "xxxx",
