@@ -1,0 +1,8 @@
+# Rename this to "creds.json" after editing
+# Change "xxxx" to the unique ID or secret string
+{
+  "client_id": "xxxx",
+  "client_secret": "xxxx",
+  "authorization_base_url": "https://github.com/login/oauth/authorize",
+  "token_url": "https://github.com/login/oauth/access_token"
+}
